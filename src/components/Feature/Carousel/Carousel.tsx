@@ -2,33 +2,49 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { ComponentParams, ComponentRendering, Image } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  ComponentParams,
+  ComponentRendering,
+  Image,
+  ImageFieldValue,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 interface CarouselProps {
   rendering: ComponentRendering & { params: ComponentParams };
   params: ComponentParams;
+  fields: {
+    data: {
+      item: {
+        children: {
+          results: {
+            Image: ImageFieldValue;
+          }[];
+        };
+      };
+    };
+  };
 }
 
-const NextArrow = (props) => {
+const NextArrow = (props: { onClick?: React.MouseEventHandler }) => {
   const { onClick } = props;
   return (
     <div
-      className="z-10 absolute top-50 right-10 md:right-20 lg:right-32 cursor-pointer"
+      className="top-50 absolute right-10 z-10 cursor-pointer md:right-20 lg:right-32"
       onClick={onClick}
     >
-      <SlArrowRight className="md:text-4xl lg:text-6xl text-black" />
+      <SlArrowRight className="text-black md:text-4xl lg:text-6xl" />
     </div>
   );
 };
-const PrevArrow = (props) => {
+const PrevArrow = (props: { onClick?: React.MouseEventHandler }) => {
   const { onClick } = props;
   return (
     <div
-      className="z-10 absolute top-50 left-10 md:left-20 lg:left-32 cursor-pointer"
+      className="top-50 absolute left-10 z-10 cursor-pointer md:left-20 lg:left-32"
       onClick={onClick}
     >
-      <SlArrowLeft className="md:text-4xl lg:text-6xl text-black" />
+      <SlArrowLeft className="text-black md:text-4xl lg:text-6xl" />
     </div>
   );
 };
@@ -46,7 +62,7 @@ export const Default = ({ fields }: CarouselProps): JSX.Element => {
     <div className="relative">
       <Slider {...settings}>
         {fields?.data?.item?.children?.results?.map((item, index) => (
-          <Image key={index} field={item?.Image?.src} />
+          <Image key={index} field={item?.Image} />
         ))}
       </Slider>
     </div>
