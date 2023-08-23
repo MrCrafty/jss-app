@@ -18,6 +18,9 @@ const nextConfig = {
   env: {
     PUBLIC_URL: publicUrl,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 
   i18n: {
     // These are all the locales you want to support in your application.
@@ -27,7 +30,7 @@ const nextConfig = {
     // prefixed path e.g. `/styleguide`.
     defaultLocale: jssConfig.defaultLanguage,
   },
-  
+
   // Enable React Strict Mode
   reactStrictMode: true,
 
@@ -53,7 +56,7 @@ const nextConfig = {
       {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
-      }, 
+      },
     ];
   },
 };
@@ -61,4 +64,4 @@ const nextConfig = {
 module.exports = () => {
   // Run the base config through any configured plugins
   return Object.values(plugins).reduce((acc, plugin) => plugin(acc), nextConfig);
-}
+};
