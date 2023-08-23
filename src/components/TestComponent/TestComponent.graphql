@@ -1,0 +1,15 @@
+gql`query CategoryListing {
+  item(path: "{60121C2F-AFEA-41A4-BD22-7E87B374ABB4}", language: "en") {
+    children {
+      results {
+        Title: field(name: "Name") {
+          jsonValue
+        }
+        Image: field(name: "Image") {
+          jsonValue
+        }
+      }
+    }
+  }
+}
+`
