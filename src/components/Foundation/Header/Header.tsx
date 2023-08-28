@@ -30,17 +30,17 @@ export interface HeaderProps {
   };
 }
 
-export const Default = ({ fields }: HeaderProps): JSX.Element => {
+export const Header = ({ fields }: HeaderProps): JSX.Element => {
   // const id = fields.params.RenderingIdentifier;
   return (
     <div className="bg-zinc-50">
       <nav className="container mx-auto flex justify-between py-5">
-        <div className="w-auto my-auto">
+        <div className="my-auto w-auto">
           <Link href={'/'}>
             <Image field={fields.Logo} className="w-full" />
           </Link>
         </div>
-        <ul className="flex flex-row [&>li]:ml-5 items-center text-2xl">
+        <ul className="flex flex-row items-center text-2xl [&>li]:ml-5">
           {fields?.NavigationLinks?.map((element, index) => {
             return (
               <li className="nav-item" key={index}>

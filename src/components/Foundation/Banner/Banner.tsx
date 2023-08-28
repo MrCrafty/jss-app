@@ -21,17 +21,17 @@ export type BannerProps = {
   };
 };
 
-export const Default = ({ fields }: BannerProps): JSX.Element => {
+export const Banner = ({ fields }: BannerProps): JSX.Element => {
   return fields?.data?.PageData?.Title?.jsonValue?.value != 'Home' ? (
     <div className=" relative">
       <Image
         field={fields?.data?.CurrentData?.Image?.jsonValue}
-        className="w-full min-h-[80px] grayscale-50"
+        className="min-h-[80px] w-full grayscale-50"
       />
       <Text
         tag="h2"
         field={fields?.data?.PageData?.Title?.jsonValue}
-        className="text-5xl md:text-6xl lg:text-8xl font-Poppins font-extralight  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  font-Poppins text-5xl font-extralight text-white md:text-6xl lg:text-8xl"
       />
     </div>
   ) : (

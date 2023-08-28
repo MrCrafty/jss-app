@@ -1,11 +1,11 @@
-import { Default } from './Banner';
+import { Banner } from './Banner';
 import { data } from './Banner.mock';
 
 const meta = {
   Title: 'Breadcrumb',
-  component: Default,
+  component: Banner,
 };
 
-export const Page = () => <Default {...data} />;
+export const Default = () => <Banner {...data} />;
 
 export default meta;

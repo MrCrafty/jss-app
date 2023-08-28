@@ -3,6 +3,7 @@ import {
   RestDictionaryService,
   GraphQLDictionaryService,
   constants,
+  SiteInfo,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import config from 'temp/config';
 
@@ -15,12 +16,18 @@ export class DictionaryServiceFactory {
    * @returns {DictionaryService} service instance
    */
   create(siteName: string): DictionaryService {
+    const sites: SiteInfo[] = JSON.parse(config.sites);
+
+    const rootItemId =
+      (sites.find((site) => site.name === siteName)?.rootItemId as string) ??
+      '{D7068BB3-814C-4EC7-84A3-7BEAA739FAA6}';
     return process.env.FETCH_WITH === constants.FETCH_WITH.GRAPHQL
       ? new GraphQLDictionaryService({
           endpoint: config.graphQLEndpoint,
           apiKey: config.sitecoreApiKey,
           siteName,
-          rootItemId: '{D7068BB3-814C-4EC7-84A3-7BEAA739FAA6}',
+          rootItemId,
+          // rootItemId: '{D7068BB3-814C-4EC7-84A3-7BEAA739FAA6}',
 
           /*
             The Dictionary Service needs a root item ID in order to fetch dictionary phrases for the current app. 

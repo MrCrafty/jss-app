@@ -28,7 +28,6 @@ interface ProductListingProps {
 }
 
 export const Default = (props: ProductListingProps): JSX.Element => {
-  console.log(props?.fields);
   //   /*==============================Initializing the states==============================*/
   const initialproducts = 4;
   const productperload = 4;
@@ -75,10 +74,10 @@ export const Default = (props: ProductListingProps): JSX.Element => {
   /*==============================Rendered HTML code==============================*/
   return (
     <div className="container mt-5 font-Poppins">
-      <ul className="hidden lg:flex lg:flex-row mt-5 items-baseline  gap-y-5 ">
-        <li className="mr-8 px-4 py-2 text-5xl border-r-2">
+      <ul className="mt-5 hidden items-baseline gap-y-5 lg:flex  lg:flex-row ">
+        <li className="mr-8 border-r-2 px-4 py-2 text-5xl">
           <Link href="/categories">
-            <BsArrowLeft className="inline text-4xl mr-2" />
+            <BsArrowLeft className="mr-2 inline text-4xl" />
             Back
           </Link>
         </li>
@@ -87,7 +86,7 @@ export const Default = (props: ProductListingProps): JSX.Element => {
           const title = item.name == 'All Categories' ? 'null' : String(item.name).toLowerCase();
           return (
             <li
-              className={`mr-16 text-5xl pb-2 relative after:content-[""] after:transition-all after:absolute after:left-0 after:-bottom-1 after:w-0 after:border-b-2 after:border-blue-500 after:hover:w-full after:block ${
+              className={`relative mr-16 pb-2 text-5xl after:absolute after:-bottom-1 after:left-0 after:block after:w-0 after:border-b-2 after:border-blue-500 after:transition-all after:content-[""] after:hover:w-full ${
                 category == title ? 'after:w-full' : ''
               }`}
               key={index}
@@ -96,7 +95,7 @@ export const Default = (props: ProductListingProps): JSX.Element => {
                 onClick={() => {
                   handleCategory(title);
                 }}
-                className="text-slate-900 hover:text-slate-900 break-keep"
+                className="break-keep text-slate-900 hover:text-slate-900"
               >
                 {item.name}
               </a>
@@ -108,7 +107,7 @@ export const Default = (props: ProductListingProps): JSX.Element => {
         value={category || 'null'}
         name="categories"
         id="categories"
-        className="lg:hidden text-3xl"
+        className="text-3xl lg:hidden"
         onChange={(e) => {
           setCategory(e.target.value == 'all categories' ? 'null' : e.target.value);
           typeof window !== undefined
@@ -128,30 +127,34 @@ export const Default = (props: ProductListingProps): JSX.Element => {
       {/*==============================Rendering all the products according to the category selected==============================*/}
 
       {category == 'null' ? (
-        <div className="mt-5 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-7 gap-y-14">
-          {products?.slice(0, initalProducts).map((item, index) => (
-            <ProductItem
-              key={index}
-              Price={item?.Price}
-              Title={item?.Title}
-              image={item?.image}
-              link={item?.link}
-              Categories={item?.Categories}
-            />
-          ))}
+        <div className="mx-auto mt-5 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-3 lg:grid-cols-4">
+          {products
+            ?.slice(0, initalProducts)
+            .map((item, index) => (
+              <ProductItem
+                key={index}
+                Price={item?.Price}
+                Title={item?.Title}
+                image={item?.image}
+                link={item?.link}
+                Categories={item?.Categories}
+              />
+            ))}
         </div>
       ) : (
-        <div className="mt-5 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-7 gap-y-14">
-          {finalProducts?.slice(0, initalProducts)?.map((item, index) => (
-            <ProductItem
-              key={index}
-              Price={item?.Price}
-              Title={item?.Title}
-              image={item?.image}
-              link={item?.link}
-              Categories={item?.Categories}
-            />
-          ))}
+        <div className="mx-auto mt-5 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-3 lg:grid-cols-4">
+          {finalProducts
+            ?.slice(0, initalProducts)
+            ?.map((item, index) => (
+              <ProductItem
+                key={index}
+                Price={item?.Price}
+                Title={item?.Title}
+                image={item?.image}
+                link={item?.link}
+                Categories={item?.Categories}
+              />
+            ))}
         </div>
       )}
       {(category != 'null' && finalProducts.length == 0) || products.length == 0 ? (
@@ -160,11 +163,11 @@ export const Default = (props: ProductListingProps): JSX.Element => {
         ''
       )}
       {/*============================== Rendering Loadmore button for pagination==============================*/}
-      <div className="w-full flex justify-center">
+      <div className="flex w-full justify-center">
         {(category == 'null' && products.length > initalProducts) ||
         (category != 'null' && finalProducts.length > initalProducts) ? (
           <button
-            className="text-4xl mt-5 py-3 px-5 bg-slate-950 text-slate-100 rounded-full hover:bg-neutral-700 transition-all"
+            className="mt-5 rounded-full bg-slate-950 px-5 py-3 text-4xl text-slate-100 transition-all hover:bg-neutral-700"
             onClick={() => {
               handleLoadmore();
             }}

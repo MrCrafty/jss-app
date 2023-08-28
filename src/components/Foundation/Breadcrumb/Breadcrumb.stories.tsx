@@ -1,11 +1,11 @@
-import { Default } from './Breadcrumb';
+import { Breadcrumb } from './Breadcrumb';
 import { data } from './Breadcrumb.mock';
 
 const meta = {
   Title: 'Breadcrumb',
-  component: Default,
+  component: Breadcrumb,
 };
 
-export const Page = () => <Default {...data} />;
+export const Default = () => <Breadcrumb {...data} />;
 
 export default meta;

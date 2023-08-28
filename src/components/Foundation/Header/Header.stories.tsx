@@ -1,11 +1,11 @@
-import { Default } from './Header';
+import { Header } from './Header';
 import { data } from './Header.mock';
 
 const meta = {
   Title: 'Feature/Breadcrumb',
-  component: Default,
+  component: Header,
 };
 
-export const Page = () => <Default {...data} />;
+export const Default = () => <Header {...data} />;
 
 export default meta;

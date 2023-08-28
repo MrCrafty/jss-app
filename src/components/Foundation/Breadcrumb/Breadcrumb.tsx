@@ -33,11 +33,12 @@ export interface BreadcrumbProps {
   };
 }
 
-export const Default = ({ fields }: BreadcrumbProps): JSX.Element | false => {
+export const Breadcrumb = ({ fields }: BreadcrumbProps): JSX.Element => {
+  console.log('BreadcrumbProps', fields);
   return (
     <div
       className={`container mx-auto mt-5 ${
-        fields?.data?.item?.field?.Title.value != 'Home' ? 'hidden' : ''
+        fields?.data?.item?.field?.Title.value == 'Home' ? 'hidden' : ''
       }`}
     >
       <ul className="flex flex-row uppercase [&>li]:text-3xl">
@@ -56,7 +57,7 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element | false => {
                 </Link>
               </li>
             );
-          }
+          } else return <></>;
         })}
         <li>
           {

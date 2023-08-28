@@ -1,12 +1,12 @@
-import { Default } from './About';
+import { About } from './About';
 import { data } from './About.mock';
 
 const meta = {
   title: 'About',
-  component: Default,
+  component: About,
   tags: ['autodocs'],
 };
 
-export const Home = () => <Default {...data} />;
+export const Default = () => <About {...data} />;
 
 export default meta;
