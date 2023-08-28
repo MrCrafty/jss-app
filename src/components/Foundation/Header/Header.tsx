@@ -30,7 +30,7 @@ export interface HeaderProps {
   };
 }
 
-export const Header = ({ fields }: HeaderProps): JSX.Element => {
+export const Default = ({ fields }: HeaderProps): JSX.Element => {
   // const id = fields.params.RenderingIdentifier;
   return (
     <div className="bg-zinc-50">

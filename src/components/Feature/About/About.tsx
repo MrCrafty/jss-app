@@ -19,7 +19,7 @@ export interface AboutProps {
   };
 }
 
-export const About = (props: AboutProps): JSX.Element => {
+export const Default = (props: AboutProps): JSX.Element => {
   // const id = props.params.RenderingIdentifier;
 
   return (

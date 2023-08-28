@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import {
   ComponentParams,
   ComponentRendering,
+  Field,
   Image,
   ImageFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -18,7 +19,7 @@ interface CarouselProps {
       item: {
         children: {
           results: {
-            Image: ImageFieldValue;
+            Image: { src: Field<ImageFieldValue> };
           }[];
         };
       };
@@ -62,7 +63,7 @@ export const Default = ({ fields }: CarouselProps): JSX.Element => {
     <div className="relative">
       <Slider {...settings}>
         {fields?.data?.item?.children?.results?.map((item, index) => (
-          <Image key={index} field={item?.Image} />
+          <Image key={index} field={item?.Image?.src} />
         ))}
       </Slider>
     </div>

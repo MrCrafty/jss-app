@@ -21,7 +21,7 @@ export type BannerProps = {
   };
 };
 
-export const Banner = ({ fields }: BannerProps): JSX.Element => {
+export const Default = ({ fields }: BannerProps): JSX.Element => {
   return fields?.data?.PageData?.Title?.jsonValue?.value != 'Home' ? (
     <div className=" relative">
       <Image

@@ -33,7 +33,7 @@ export interface BreadcrumbProps {
   };
 }
 
-export const Breadcrumb = ({ fields }: BreadcrumbProps): JSX.Element => {
+export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
   console.log('BreadcrumbProps', fields);
   return (
     <div
