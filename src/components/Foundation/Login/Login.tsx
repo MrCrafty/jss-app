@@ -1,15 +1,9 @@
 'use client';
 import React, { FormEvent, useState } from 'react';
-import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-interface LoginProps {
-  rendering: ComponentRendering & { params: ComponentParams };
-  params: ComponentParams;
-}
-
-export const Default = (props: LoginProps): JSX.Element => {
+export const Default = (): JSX.Element => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,9 +19,9 @@ export const Default = (props: LoginProps): JSX.Element => {
         password: password,
       }),
     });
-
+    const data = await res.json();
     console.log('data', await res.json());
-    // data.success ? router.push('/') : window.alert(data.message);
+    data.success ? router.push('/') : window.alert(data.message);
   };
   return (
     <div className="login-wrapper container">
