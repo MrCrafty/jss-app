@@ -34,7 +34,6 @@ export interface BreadcrumbProps {
 }
 
 export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
-  console.log('BreadcrumbProps', fields);
   return (
     <div
       className={`container mx-auto mt-5 ${

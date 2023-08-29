@@ -3,6 +3,7 @@
   "description": "Application utilizing Sitecore JavaScript Services and Next.js",
   "version": "21.2.1",
   "private": true,
+  "proxy":"https://sc-jss-playgroundsc.dev.local",
   "config": {
     "appName": "training-exercise",
     "rootPlaceholders": [
