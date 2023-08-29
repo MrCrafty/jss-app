@@ -9,7 +9,7 @@ export const Default = (): JSX.Element => {
   const [password, setPassword] = useState('');
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const res = await fetch('https://sc-jss-playgroundsc.dev.local/api/auth/login', {
+    const res = await fetch('https://square-termite-set.ngrok-free.app/api/auth/login', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
