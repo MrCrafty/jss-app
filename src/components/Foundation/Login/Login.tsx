@@ -11,10 +11,10 @@ export const Default = (): JSX.Element => {
   const url = 'https://square-termite-set.ngrok-free.app/api/auth/login';
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const content = JSON.stringify({
+    const content = {
       email: email,
       password: password,
-    });
+    };
     axios
       .post(url, content)
       .then((res) => {
