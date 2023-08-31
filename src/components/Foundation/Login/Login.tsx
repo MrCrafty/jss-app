@@ -19,7 +19,6 @@ export const Default = (): JSX.Element => {
       .post(url, content, {
         headers: {
           'content-type': 'application/json',
-          'Content-Length': JSON.stringify(content).length.toString(),
         },
       })
       .then((res) => {
