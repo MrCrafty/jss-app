@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { BiSolidPhone } from 'react-icons/bi';
 import { LuMail } from 'react-icons/lu';
 
-interface ContactUsProps {
-  rendering: ComponentRendering & { params: ComponentParams };
-  params: ComponentParams;
-}
-
-export const Default = (props: ContactUsProps): JSX.Element => {
+export const Default = (): JSX.Element => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
