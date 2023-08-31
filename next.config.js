@@ -21,6 +21,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  crossOrigin: 'anonymous',
 
   i18n: {
     // These are all the locales you want to support in your application.
