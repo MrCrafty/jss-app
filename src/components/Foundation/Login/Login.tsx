@@ -11,30 +11,42 @@ export const Default = (): JSX.Element => {
   const url = 'https://square-termite-set.ngrok-free.app/api/auth/login';
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const content = {
+    const content = JSON.stringify({
       email: email,
       password: password,
-    };
-    axios
-      .post(url, content)
-      .then((res) => {
-        res.data.success ? router.push('/') : window.alert(res.data.message);
-      })
-      .catch((err) => {
-        console.log('fetch error', err);
-      });
-    // const res = await fetch('https://square-termite-set.ngrok-free.app/api/auth/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     'content-length': content.length.toString(),
-    //     'access-control-allow-origin': '*',
-    //   },
-    //   body: content,
-    // });
-    // const data = await res.json();
-    // console.log('data', await res.json());
-    // data.success ? router.push('/') : window.alert(data.message);
+    });
+    // axios
+    //   .post(url, content, {
+    //     headers: {
+    //       'content-type': 'application/json',
+    //       'access-control-allow-origin': '*',
+    //       'access-control-allow-credentials': 'true',
+    //       'access-control-allow-methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+    //       'access-control-allow-headers':
+    //         'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+    //     },
+    //   })
+    //   .then((res) => {
+    //     res.data.success ? router.push('/') : window.alert(res.data.message);
+    //   })
+    //   .catch((err) => {
+    //     console.log('fetch error', err);
+    //   });
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'access-control-allow-origin': '*',
+        'access-control-allow-credentials': 'true',
+        'access-control-allow-methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+        'access-control-allow-headers':
+          'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+      },
+      body: content,
+    });
+    const data = await res.json();
+    console.log('data', await res.json());
+    data.success ? router.push('/') : window.alert(data.message);
   };
   return (
     <div className="login-wrapper container">
