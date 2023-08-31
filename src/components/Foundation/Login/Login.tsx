@@ -9,15 +9,18 @@ export const Default = (): JSX.Element => {
   const [password, setPassword] = useState('');
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const content = JSON.stringify({
+      email: email,
+      password: password,
+    });
     const res = await fetch('https://square-termite-set.ngrok-free.app/api/auth/login', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'content-length': content.length.toString(),
+        'access-control-allow-origin': '*',
       },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
+      body: content,
     });
     const data = await res.json();
     console.log('data', await res.json());

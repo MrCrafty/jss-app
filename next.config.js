@@ -57,6 +57,10 @@ const nextConfig = {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
       },
+      {
+        source: '/api/auth/:path*',
+        destination: `${jssConfig.sitecoreApiHost}/api/auth/:path*`,
+      },
     ];
   },
 };

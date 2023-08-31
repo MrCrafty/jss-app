@@ -44,7 +44,7 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
             <Image field={fields.Logo} className="w-full" />
           </Link>
         </div>
-        <ul className="flex flex-row items-center text-2xl [&>li]:ml-5">
+        <ul className="flex flex-row items-center font-Poppins text-2xl [&>li]:ml-5">
           {fields?.NavigationLinks?.map((element, index) => {
             return (
               <li className="nav-item" key={index}>
