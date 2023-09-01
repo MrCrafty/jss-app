@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+
 import axios from 'axios';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -6,7 +7,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const url = 'https://square-termite-set.ngrok-free.app/api/auth/login';
     const content = { email: req.body.email, password: req.body.password };
     axios.post(url, content).then((data) => {
-      res.status(200).json({ data });
+      const cookie =
+        data?.headers['set-cookie']?.concat([
+          `email=${req.body.email}; path=/; secure; HttpOnly; SameSite=None`,
+        ]) ?? '';
+      res.setHeader('set-cookie', cookie);
+      res.status(200).json({ data: 'ok', success: true });
     });
   }
 }

@@ -22,7 +22,7 @@ export const Default = (): JSX.Element => {
         },
       })
       .then((res) => {
-        res.data.success ? router.push('/') : window.alert(res.data.message);
+        // res.data.success ? router.push('/') : window.alert(res.data);
       })
       .catch((err) => {
         console.log('fetch error', err);
