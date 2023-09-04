@@ -16,7 +16,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         res.setHeader('set-cookie', cookie);
         res.status(200).json({ data: data.data.message, success: data.data.success });
       })
-      .catch((err) => {
+      .catch(() => {
         res.status(500).send('Error in Sitecore Server');
       });
   }
