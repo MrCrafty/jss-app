@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ComponentParams,
   ComponentRendering,
@@ -8,8 +8,9 @@ import {
   Text,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
-import { BsArrowRight } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+import axios from 'axios';
+import UserAccountButtons from './UserAccountButtons';
 
 interface Fields {
   Title: Field<string>;
@@ -35,7 +36,21 @@ export interface HeaderProps {
 export const Default = ({ fields }: HeaderProps): JSX.Element => {
   const router = useRouter();
   const currentPage = router.asPath;
-  // const id = fields.params.RenderingIdentifier;
+  const [IsLogin, setIsLogin] = useState<boolean>(true);
+
+  useEffect(() => {
+    axios.get('/api/auth/IsLogin').then((data) => {
+      setIsLogin(data.data.IsLogin);
+    });
+  }, []);
+  console.log('IsLogin', IsLogin);
+  const handleLogout = () => {
+    axios.post('/api/auth/logout').then(() => {
+      ('');
+    });
+    window.location.href = '/login';
+  };
+
   return (
     <div className="bg-zinc-50">
       <nav className="container mx-auto flex justify-between py-5">
@@ -51,8 +66,10 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
                 {
                   <Link
                     href={element.url}
-                    className={`nav-link text-black transition-all ${
-                      element.url == currentPage ? 'text-4xl font-extrabold' : ''
+                    className={` text-black transition-all ${
+                      element.url == currentPage
+                        ? 'cursor-default text-4xl font-extrabold hover:text-black'
+                        : 'hover:text-blue-500'
                     }`}
                   >
                     <Text field={element.fields.Title} />
@@ -61,17 +78,13 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
               </li>
             );
           })}
-          <li className="nav-item ">
-            <Link
-              href={'/login'}
-              className={`border-1 flex cursor-pointer items-center border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white ${
-                currentPage == '/login' ? 'cursor-default bg-slate-700 text-white' : ''
-              }`}
-            >
-              Login
-              <BsArrowRight className="inline-block" />
-            </Link>
-          </li>
+          {
+            <UserAccountButtons
+              handleLogout={handleLogout}
+              IsLogin={IsLogin}
+              currentPage={currentPage}
+            />
+          }
         </ul>
       </nav>
     </div>

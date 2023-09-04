@@ -56,7 +56,7 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
                 </Link>
               </li>
             );
-          } else return <></>;
+          } else return '';
         })}
         <li>
           {
