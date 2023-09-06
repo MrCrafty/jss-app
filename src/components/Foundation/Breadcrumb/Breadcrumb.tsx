@@ -36,12 +36,12 @@ export interface BreadcrumbProps {
 export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
   return (
     <div
-      className={`container mx-auto mt-5 ${
+      className={`container mx-auto mt-10 ${
         fields?.data?.item?.field?.Title.value == 'Home' ? 'hidden' : ''
       }`}
     >
       <ul className="flex flex-row uppercase [&>li]:text-3xl">
-        {fields?.data?.item?.ancestors?.reverse().map((item, index: number) => {
+        {fields?.data?.item?.ancestors.reverse()?.map((item, index: number) => {
           if (Object.keys(item).length > 0) {
             return (
               <li key={index} className="after:mx-2 after:content-['/']">

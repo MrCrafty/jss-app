@@ -73,15 +73,15 @@ export const Default = (props: ProductListingProps): JSX.Element => {
   });
   /*==============================Rendered HTML code==============================*/
   return (
-    <div className="container mt-5 font-Poppins">
-      <ul className="mt-5 hidden items-baseline gap-y-5 lg:flex  lg:flex-row ">
+    <div className="container mt-10 font-Poppins">
+      {/*==============================rendering all the categories in the navbar==============================*/}
+      <ul className="mt-10 hidden items-baseline gap-y-5 lg:flex  lg:flex-row ">
         <li className="mr-8 border-r-2 px-4 py-2 text-5xl">
           <Link href="/categories">
             <BsArrowLeft className="mr-2 inline text-4xl" />
             Back
           </Link>
         </li>
-        {/*==============================rendering all the categories in the navbar==============================*/}
         {props?.fields?.data?.Categories?.children?.results?.map((item, index: number) => {
           const title = item.name == 'All Categories' ? 'null' : String(item.name).toLowerCase();
           return (
@@ -127,7 +127,7 @@ export const Default = (props: ProductListingProps): JSX.Element => {
       {/*==============================Rendering all the products according to the category selected==============================*/}
 
       {category == 'null' ? (
-        <div className="mx-auto mt-5 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mx-auto mt-20 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-3 lg:grid-cols-4">
           {products
             ?.slice(0, initalProducts)
             .map((item, index) => (

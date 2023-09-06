@@ -31,7 +31,7 @@ const NextArrow = (props: { onClick?: React.MouseEventHandler }) => {
   const { onClick } = props;
   return (
     <div
-      className="top-50 absolute right-10 z-10 cursor-pointer md:right-20 lg:right-32"
+      className="absolute right-10 top-1/2 z-10 cursor-pointer md:right-20 lg:right-32"
       onClick={onClick}
     >
       <SlArrowRight className="text-black md:text-4xl lg:text-6xl" />
@@ -42,7 +42,7 @@ const PrevArrow = (props: { onClick?: React.MouseEventHandler }) => {
   const { onClick } = props;
   return (
     <div
-      className="top-50 absolute left-10 z-10 cursor-pointer md:left-20 lg:left-32"
+      className="absolute left-10 top-1/2 z-10 cursor-pointer md:left-20 lg:left-32"
       onClick={onClick}
     >
       <SlArrowLeft className="text-black md:text-4xl lg:text-6xl" />

@@ -23,7 +23,7 @@ export const Default = (props: AboutProps): JSX.Element => {
   // const id = props.params.RenderingIdentifier;
 
   return (
-    <div className="container mb-28 mt-5">
+    <div className="container mb-28 mt-10">
       <div
         className={`flex justify-between ${
           props?.fields?.IsRight?.value ? 'flex-row-reverse' : 'flex-row'
