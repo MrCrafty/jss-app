@@ -7,5 +7,6 @@ interface RegisterUserProps {
 }
 
 export const Default = (props: RegisterUserProps): JSX.Element => {
+  console.log('props', props);
   return <div></div>;
 };
