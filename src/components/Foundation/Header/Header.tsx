@@ -43,7 +43,6 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
       setIsLogin(data.data.IsLogin);
     });
   }, []);
-  console.log('IsLogin', IsLogin);
   const handleLogout = () => {
     axios.post('/api/auth/logout').then(() => {
       ('');
@@ -59,7 +58,7 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
             <Image field={fields.Logo} className="w-full" />
           </Link>
         </div>
-        <ul className="flex flex-row items-center font-Poppins text-2xl [&>li]:ml-5">
+        <ul className="flex flex-row items-center gap-5 font-Poppins text-2xl">
           {fields?.NavigationLinks?.map((element, index) => {
             return (
               <li className="nav-item" key={index}>

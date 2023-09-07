@@ -24,17 +24,30 @@ const UserAccountButtons = (props: {
       </button>
     </li>
   ) : (
-    <li>
-      <Link
-        href={'/login'}
-        className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white ${
-          props.currentPage == '/login' ? 'cursor-default bg-slate-700 text-white' : ''
-        }`}
-      >
-        Login
-        <BsArrowRight className="inline-block" />
-      </Link>
-    </li>
+    <ul className="flex gap-5">
+      <li>
+        <Link
+          href={'/login'}
+          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white ${
+            props.currentPage == '/login' ? 'cursor-default bg-slate-700 text-white' : ''
+          }`}
+        >
+          Login
+          <BsArrowRight className="inline-block" />
+        </Link>
+      </li>
+      <li>
+        <Link
+          href={'/register'}
+          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white ${
+            props.currentPage == '/register' ? 'cursor-default bg-slate-700 text-white' : ''
+          }`}
+        >
+          Register
+          <BsArrowRight className="inline-block" />
+        </Link>
+      </li>
+    </ul>
   );
 };
 export default UserAccountButtons;

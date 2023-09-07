@@ -5,6 +5,7 @@ import { LuMail } from 'react-icons/lu';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import Input from 'components/Project/Training_Exercise/CustomHOC/Input';
 
 export const Default = (): JSX.Element => {
   const url = '/api/forms/contactform';
@@ -46,70 +47,28 @@ export const Default = (): JSX.Element => {
       <div className="flex w-1/2 flex-col gap-4 border border-slate-300 px-16 py-24">
         <h3 className="text-center text-4xl">Send Us a Message</h3>
         <form onSubmit={formik.handleSubmit} className="my-5 flex flex-col gap-7">
-          <div className="relative flex flex-col">
-            <input
-              type="text"
-              name="FirstName"
-              min={1}
-              max={50}
-              className="peer border border-slate-300 p-3 text-3xl"
-              onChange={formik.handleChange}
-              value={formik.values.FirstName}
-              onBlur={formik.handleBlur}
-            />
-            <label
-              htmlFor="firstName"
-              className={`absolute ${
-                formik.values.FirstName == ''
-                  ? 'top-1/2 text-2xl text-gray-400'
-                  : 'top-0 text-xl text-gray-700'
-              } ml-5 -translate-y-1/2 bg-white px-1  transition-all after:text-red-500 after:content-["*"] peer-focus-visible:top-0 peer-focus-visible:text-xl peer-focus-visible:text-gray-700`}
-            >
-              First Name
-            </label>
-          </div>
-          <div className="relative flex flex-col">
-            <input
-              type="text"
-              name="LastName"
-              min={1}
-              max={50}
-              className="peer border border-slate-300 p-3 text-3xl"
-              onChange={formik.handleChange}
-              value={formik.values.LastName}
-            />
-            <label
-              htmlFor="lastName"
-              className={`absolute ${
-                formik.values.LastName == ''
-                  ? 'top-1/2 text-2xl text-gray-400'
-                  : 'top-0 text-xl text-gray-700'
-              } ml-5 -translate-y-1/2  bg-white px-1 text-gray-400 transition-all after:text-red-500 after:content-["*"] peer-focus-visible:top-0 peer-focus-visible:text-xl peer-focus-visible:text-gray-700`}
-            >
-              Last Name
-            </label>
-          </div>
-          <div className="relative flex flex-col">
-            <input
-              type="email"
-              name="Email"
-              min={1}
-              max={50}
-              className="peer border border-slate-300 p-3 text-3xl"
-              onChange={formik.handleChange}
-              value={formik.values.Email}
-            />
-            <label
-              htmlFor="email"
-              className={`absolute ${
-                formik.values.Email == ''
-                  ? 'top-1/2 text-2xl text-gray-400'
-                  : 'top-0 text-xl text-gray-700'
-              } ml-5 -translate-y-1/2  bg-white px-1 text-gray-400 transition-all after:text-red-500 after:content-["*"] peer-focus-visible:top-0 peer-focus-visible:text-xl peer-focus-visible:text-gray-700`}
-            >
-              Email Address
-            </label>
-          </div>
+          <Input
+            type="text"
+            name="FirstName"
+            handleChange={formik.handleChange}
+            value={formik.values.FirstName}
+            label="First Name"
+          />
+          <Input
+            type="text"
+            name="LastName"
+            handleChange={formik.handleChange}
+            value={formik.values.LastName}
+            label="Last Name"
+          />
+          <Input
+            type="email"
+            name="Email"
+            handleChange={formik.handleChange}
+            value={formik.values.Email}
+            label="Email Address"
+          />
+
           <div className="relative mb-4 flex flex-col">
             <textarea
               name="Message"

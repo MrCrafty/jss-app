@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ComponentParams,
   ComponentRendering,
@@ -34,6 +34,16 @@ export interface BreadcrumbProps {
 }
 
 export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
+  const [isClient, setIsClient] = useState(false);
+  console.log(fields);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return <></>;
+  }
   return (
     <div
       className={`container mx-auto mt-10 ${
@@ -41,7 +51,7 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
       }`}
     >
       <ul className="flex flex-row uppercase [&>li]:text-3xl">
-        {fields?.data?.item?.ancestors.reverse()?.map((item, index: number) => {
+        {fields?.data?.item?.ancestors.reverse().map((item, index: number) => {
           if (Object.keys(item).length > 0) {
             return (
               <li key={index} className="after:mx-2 after:content-['/']">
@@ -56,7 +66,7 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
                 </Link>
               </li>
             );
-          } else return '';
+          } else return <></>;
         })}
         <li>
           {
