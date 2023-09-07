@@ -6,8 +6,10 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Input from 'components/Project/Training_Exercise/CustomHOC/Input';
+import { useRouter } from 'next/router';
 
 export const Default = (): JSX.Element => {
+  const router = useRouter();
   const url = '/api/forms/contactform';
   const formik = useFormik({
     initialValues: {
@@ -19,8 +21,9 @@ export const Default = (): JSX.Element => {
     onSubmit: (values) => {
       axios
         .post(url, { ...values })
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
+          alert('Thank you for contacting us');
+          router.reload();
         })
         .catch((err) => {
           console.log('contactform', err);

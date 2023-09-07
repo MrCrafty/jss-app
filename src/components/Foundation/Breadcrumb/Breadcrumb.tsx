@@ -35,8 +35,6 @@ export interface BreadcrumbProps {
 
 export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
   const [isClient, setIsClient] = useState(false);
-  console.log(fields);
-
   useEffect(() => {
     setIsClient(true);
   }, []);
