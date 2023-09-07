@@ -1,17 +1,11 @@
 import React from 'react';
-import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import Input from 'components/Project/Training_Exercise/CustomHOC/Input';
 import * as Yup from 'yup';
 import Link from 'next/link';
 
-interface RegisterUserProps {
-  rendering: ComponentRendering & { params: ComponentParams };
-  params: ComponentParams;
-}
-
-export const Default = (props: RegisterUserProps): JSX.Element => {
+export const Default = (): JSX.Element => {
   const formik = useFormik({
     initialValues: {
       FirstName: '',
