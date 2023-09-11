@@ -93,7 +93,7 @@ export const Default = (): JSX.Element => {
           <input
             type="submit"
             value={'SUBMIT'}
-            className=" mx-auto w-1/2 min-w-[100px] cursor-pointer rounded-full bg-black py-2 font-medium text-white"
+            className=" mx-auto w-1/2 min-w-[100px] cursor-pointer rounded-full bg-black py-2 text-2xl font-medium text-white"
           />
         </form>
       </div>

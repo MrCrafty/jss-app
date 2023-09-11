@@ -111,7 +111,7 @@ export const Default = (): JSX.Element => {
           <input
             type="submit"
             value={'Sign Up'}
-            className="mx-auto w-1/3 rounded-full bg-black px-5 py-3 text-white"
+            className="mx-auto w-1/3 rounded-full bg-black px-5 py-3 text-2xl text-white"
           />
         </form>
       </div>

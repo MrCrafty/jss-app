@@ -44,7 +44,7 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
   }
   return (
     <div
-      className={`container mx-auto mt-10 ${
+      className={`container mx-auto mt-10 font-Poppins ${
         fields?.data?.item?.field?.Title.value == 'Home' ? 'hidden' : ''
       }`}
     >

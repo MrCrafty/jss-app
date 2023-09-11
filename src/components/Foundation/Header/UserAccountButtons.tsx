@@ -14,13 +14,13 @@ const UserAccountButtons = (props: {
     setUserLogin(props.IsLogin);
   }, [props.IsLogin]);
   return UserLogin ? (
-    <ul className="flex gap-3">
+    <ul className="flex gap-3 [&>li]:text-2xl">
       <li>
         <button
           onClick={() => {
             props.handleLogout();
           }}
-          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white `}
+          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2  transition-all hover:bg-slate-700 hover:text-white `}
         >
           Logout
           <BsArrowRight className="inline-block" />
@@ -31,7 +31,7 @@ const UserAccountButtons = (props: {
           onClick={() => {
             props.setSideBarOpen(!props.SideBarOpen);
           }}
-          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white `}
+          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2  transition-all hover:bg-slate-700 hover:text-white `}
         >
           Cart
         </button>
@@ -42,7 +42,7 @@ const UserAccountButtons = (props: {
       <li>
         <Link
           href={'/login'}
-          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white ${
+          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2  transition-all hover:bg-slate-700 hover:text-white ${
             props.currentPage == '/login' ? 'cursor-default bg-slate-700 text-white' : ''
           }`}
         >
@@ -53,7 +53,7 @@ const UserAccountButtons = (props: {
       <li>
         <Link
           href={'/register'}
-          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2 text-2xl transition-all hover:bg-slate-700 hover:text-white ${
+          className={`flex cursor-pointer items-center border-[1px] border-slate-600 px-3 py-2  transition-all hover:bg-slate-700 hover:text-white ${
             props.currentPage == '/register' ? 'cursor-default bg-slate-700 text-white' : ''
           }`}
         >

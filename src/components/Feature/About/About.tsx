@@ -23,7 +23,7 @@ export const Default = (props: AboutProps): JSX.Element => {
   // const id = props.params.RenderingIdentifier;
 
   return (
-    <div className="container mb-28 mt-10">
+    <div className="container mb-28 mt-10 font-Poppins">
       <div
         className={`flex justify-between ${
           props?.fields?.IsRight?.value ? 'flex-row-reverse' : 'flex-row'
@@ -44,8 +44,8 @@ export const Default = (props: AboutProps): JSX.Element => {
           </div>
         </div>
         <div className="md:col-5/12 w-full break-words lg:w-7/12">
-          <Text tag="h2" field={props?.fields?.Title} className="mb-3 text-4xl font-semibold" />
-          <Text tag="p" field={props?.fields?.Content} />
+          <Text tag="h2" field={props?.fields?.Title} className="mb-3 text-5xl font-semibold" />
+          <Text tag="p" field={props?.fields?.Content} className="text-2xl" />
         </div>
       </div>
     </div>
