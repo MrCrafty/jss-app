@@ -1,10 +1,9 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
 import { Product, ProductItem } from './ProductItem';
+import axios from 'axios';
 
 interface ProductListingProps {
   rendering: ComponentRendering & { params: ComponentParams };
@@ -137,6 +136,7 @@ export const Default = (props: ProductListingProps): JSX.Element => {
                 Title={item?.Title}
                 image={item?.image}
                 link={item?.link}
+                ProductId={item?.ProductId}
                 Categories={item?.Categories}
               />
             ))}
@@ -153,6 +153,7 @@ export const Default = (props: ProductListingProps): JSX.Element => {
                 image={item?.image}
                 link={item?.link}
                 Categories={item?.Categories}
+                ProductId={item?.ProductId}
               />
             ))}
         </div>

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Field, Image, Text, ImageFieldValue } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import axios from 'axios';
 export interface Product {
   Title: { jsonValue: Field<string> };
   Price: { jsonValue: Field<string> };
@@ -12,26 +13,37 @@ export interface Product {
     }[];
   };
   link: { path: string };
+  ProductId: Field<number>;
 }
 
-export const ProductItem = ({ Title, image, Price, link }: Product) => {
+export const ProductItem = ({ Title, image, Price, link, ProductId }: Product) => {
   const [wishlist, setwishlist] = useState(false);
-
+  useEffect(() => {
+    axios.get('/api/cart/getcart').then((cart) => {
+      console.log('cart', cart.data.data);
+      Object.keys(cart.data.data).forEach((ele) => {
+        console.log('products', ele);
+        if (ele === ProductId.value.toString()) {
+          setwishlist(true);
+        }
+      });
+    });
+  }, []);
   return (
     <div className="card-container">
-      <div className="card-img w-full overflow-hidden max-h-min">
+      <div className="card-img max-h-min w-full overflow-hidden">
         <Link href={link?.path}>
-          <Image field={image?.jsonValue} className="w-full hover:scale-110 transition-all" />
+          <Image field={image?.jsonValue} className="w-full transition-all hover:scale-110" />
         </Link>
       </div>
-      <div className="card-body flex justify-between items-baseline">
+      <div className="card-body flex items-baseline justify-between">
         <div className="product-content">
           <div>
             <Link href={link?.path}>
               <Text
                 tag="h3"
                 field={Title.jsonValue}
-                className="text-4xl my-2 hover:text-blue-500 inline-block transition-all"
+                className="my-2 inline-block text-4xl transition-all hover:text-blue-500"
               />
             </Link>
           </div>
@@ -41,8 +53,16 @@ export const ProductItem = ({ Title, image, Price, link }: Product) => {
         </div>
         <div className="wishlist-icon">
           <button
-            onClick={() => {
-              setwishlist(!wishlist);
+            onClick={async () => {
+              !wishlist
+                ? axios.post('/api/cart/addtocart', { productId: ProductId.value }).then(() => {
+                    setwishlist(!wishlist);
+                  })
+                : axios
+                    .post('/api/cart/deletefromcart', { productId: ProductId.value })
+                    .then(() => {
+                      setwishlist(!wishlist);
+                    });
             }}
             className="[&>*]:text-3xl"
           >

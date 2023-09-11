@@ -1,6 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import axios from 'axios';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method == 'POST') {
