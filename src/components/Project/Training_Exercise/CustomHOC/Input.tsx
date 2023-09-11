@@ -30,12 +30,12 @@ const Input = ({
         value={value}
         min={min}
         max={max}
-        className={'peer border border-slate-300 p-3 text-3xl'}
+        className={'peer border border-black p-3 text-3xl'}
       />
       <label
         htmlFor="email"
         className={`absolute ${
-          value == '' ? 'top-1/2 text-2xl text-gray-400' : 'top-0 text-xl text-gray-700'
+          value == '' ? 'top-1/2 text-2xl text-gray-500' : 'top-0 text-xl text-gray-700'
         } ${
           required ? "after:text-red-500 after:content-['*']" : ''
         } ml-5 -translate-y-1/2 bg-white px-1  transition-all  peer-focus-visible:top-0 peer-focus-visible:text-xl peer-focus-visible:text-gray-700`}

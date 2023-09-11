@@ -3,7 +3,6 @@ import { BsArrowLeft } from 'react-icons/bs';
 import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
 import { Product, ProductItem } from './ProductItem';
-import axios from 'axios';
 
 interface ProductListingProps {
   rendering: ComponentRendering & { params: ComponentParams };

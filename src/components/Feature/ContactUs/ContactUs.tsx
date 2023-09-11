@@ -75,7 +75,7 @@ export const Default = (): JSX.Element => {
           <div className="relative mb-4 flex flex-col">
             <textarea
               name="Message"
-              className="peer border border-slate-300 p-3 text-3xl"
+              className="peer border border-black p-3 text-3xl"
               onChange={formik.handleChange}
               value={formik.values.Message}
             />
@@ -83,7 +83,7 @@ export const Default = (): JSX.Element => {
               htmlFor="message"
               className={`absolute ${
                 formik.values.Message == ''
-                  ? 'top-1/2 text-2xl text-gray-400'
+                  ? 'top-1/2 text-2xl text-gray-500'
                   : 'top-0 text-xl text-gray-700'
               } ml-5 -translate-y-1/2  bg-white px-1 text-gray-400 transition-all after:text-red-500 after:content-["*"] peer-focus-visible:top-0 peer-focus-visible:text-xl peer-focus-visible:text-gray-700`}
             >
