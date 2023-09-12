@@ -16,12 +16,6 @@ export interface Product {
 }
 
 export const ProductItem = ({ Title, image, Price, link, ProductId }: Product) => {
-  const [wishlist, setwishlist] = useState(false);
-  useEffect(() => {
-    axios.get('/api/cart/getcart').then((cart) => {
-      Object.keys(cart.data.data).includes(ProductId.value.toString()) ? setwishlist(true) : '';
-    });
-  }, []);
   return (
     <div className="card-container">
       <div className="card-img max-h-min w-full overflow-hidden">
@@ -44,30 +38,15 @@ export const ProductItem = ({ Title, image, Price, link, ProductId }: Product) =
             $<Text field={Price.jsonValue} />
           </div>
         </div>
-        <div className="wishlist-icon">
-          {wishlist ? (
-            <button
-              className="border-[1px] border-red-500  px-3 py-1 text-red-500 hover:bg-red-500 hover:text-slate-100"
-              onClick={() => {
-                axios.post('/api/cart/deletefromcart', { productId: ProductId.value }).then(() => {
-                  setwishlist(!wishlist);
-                });
-              }}
-            >
-              Remove
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                axios.post('/api/cart/addtocart', { productId: ProductId.value }).then(() => {
-                  setwishlist(!wishlist);
-                });
-              }}
-              className="border-[1px] border-slate-800 px-3 py-1 text-slate-700  transition-all hover:bg-slate-900 hover:text-slate-100"
-            >
-              Add to Cart
-            </button>
-          )}
+        <div className="wishlist-icon text-2xl">
+          <button
+            onClick={() => {
+              axios.post('/api/cart/addtocart', { productId: ProductId.value });
+            }}
+            className="border-[1px] border-slate-800 px-3 py-1 text-slate-700  transition-all hover:bg-slate-900 hover:text-slate-100"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

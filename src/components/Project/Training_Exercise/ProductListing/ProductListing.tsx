@@ -89,14 +89,14 @@ export const Default = (props: ProductListingProps): JSX.Element => {
               }`}
               key={index}
             >
-              <a
+              <button
                 onClick={() => {
                   handleCategory(title);
                 }}
                 className="break-keep text-slate-900 hover:text-slate-900"
               >
                 {item.name}
-              </a>
+              </button>
             </li>
           );
         })}

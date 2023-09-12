@@ -44,7 +44,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
           <div id="header">{route && <Placeholder name="headless-header" rendering={route} />}</div>
         </header>
         <main>
-          <div id="container content">
+          <div id="container content " className="min-h-screen">
             {route && <Placeholder name="headless-main" rendering={route} />}
           </div>
         </main>
