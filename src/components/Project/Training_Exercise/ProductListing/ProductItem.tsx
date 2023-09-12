@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Field, Image, Text, ImageFieldValue } from '@sitecore-jss/sitecore-jss-nextjs';
 import Link from 'next/link';
 import axios from 'axios';
