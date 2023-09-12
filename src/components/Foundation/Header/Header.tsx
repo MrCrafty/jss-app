@@ -39,8 +39,6 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
   const currentPage = router.asPath;
   const [IsLogin, setIsLogin] = useState<boolean>(true);
   const [SideBarOpen, setSideBarOpen] = useState(false);
-  const [Cart, setCart] = useState<Object>({});
-  const [TotalCart, setTotalCart] = useState<number>();
 
   const bodyScrollLock = () => {
     document.body.style.height = '100%';
@@ -59,14 +57,6 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
     axios.get('/api/auth/IsLogin').then((data) => {
       setIsLogin(data.data.IsLogin);
     });
-    axios.get('/api/cart/getcart').then((data) => {
-      setCart(data.data.data);
-      let count = 0;
-      Object.keys(data.data.data).forEach((ele) => {
-        count += data.data.data[ele];
-      });
-      setTotalCart(count);
-    });
   }, []);
   const handleLogout = () => {
     axios.post('/api/auth/logout').then(() => {
@@ -74,7 +64,6 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
     });
     window.location.href = '/login';
   };
-  console.log(TotalCart);
   return (
     <div className="relative font-Poppins">
       <div className="main-nav relative z-10 bg-zinc-50">
