@@ -20,8 +20,11 @@ export interface AboutProps {
 }
 
 export const Default = (props: AboutProps): JSX.Element => {
-  // const id = props.params.RenderingIdentifier;
-
+  const imageURL = String(props?.fields?.Image?.value?.src)?.replace(
+    'https://sc-jss-playgroundsc.dev.local/',
+    'https://square-termite-set.ngrok-free.app/'
+  );
+  let imageField = { ...props?.fields?.Image?.value, src: imageURL };
   return (
     <div className="container mb-28 mt-10 font-Poppins">
       <div
@@ -38,7 +41,7 @@ export const Default = (props: AboutProps): JSX.Element => {
         } before:translate-y-5`}
           >
             <Image
-              field={props?.fields?.Image}
+              field={imageField}
               className="relative h-auto w-full transition-all duration-300 "
             />
           </div>

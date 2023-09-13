@@ -15,11 +15,16 @@ export interface Product {
 }
 
 export const ProductItem = ({ Title, image, Price, link, ProductId }: Product) => {
+  const imageURL = String(image?.jsonValue?.value?.src)?.replace(
+    'https://sc-jss-playgroundsc.dev.local/',
+    'https://square-termite-set.ngrok-free.app/'
+  );
+  let imageField = { ...image?.jsonValue?.value, src: imageURL };
   return (
     <div className="card-container">
       <div className="card-img max-h-min w-full overflow-hidden">
         <Link href={link?.path}>
-          <Image field={image?.jsonValue} className="w-full transition-all hover:scale-110" />
+          <Image field={imageField} className="w-full transition-all hover:scale-110" />
         </Link>
       </div>
       <div className="card-body mt-3 flex items-baseline justify-between">

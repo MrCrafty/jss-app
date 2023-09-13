@@ -62,9 +62,14 @@ export const Default = ({ fields }: CarouselProps): JSX.Element => {
   return (
     <div className="relative">
       <Slider {...settings}>
-        {fields?.data?.item?.children?.results?.map((item, index) => (
-          <Image key={index} field={item?.Image?.src} />
-        ))}
+        {fields?.data?.item?.children?.results?.map((item, index) => {
+          const imageURL = String(item?.Image?.src?.value?.src)?.replace(
+            'https://sc-jss-playgroundsc.dev.local/',
+            'https://square-termite-set.ngrok-free.app/'
+          );
+          let imageField = { ...item?.Image?.src?.value, src: imageURL };
+          return <Image key={index} field={imageField} />;
+        })}
       </Slider>
     </div>
   );

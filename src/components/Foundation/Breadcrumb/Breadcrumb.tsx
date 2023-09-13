@@ -48,11 +48,11 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
         fields?.data?.item?.field?.Title.value == 'Home' ? 'hidden' : ''
       }`}
     >
-      <ul className="flex flex-row uppercase [&>li]:text-3xl">
+      <ul className="flex flex-row uppercase [&>li]:text-xl">
         {fields?.data?.item?.ancestors.reverse().map((item, index: number) => {
           if (Object.keys(item).length > 0) {
             return (
-              <li key={index} className="after:mx-2 after:content-['/']">
+              <li key={index} className="after:mx-2 after:content-['>']">
                 <Link
                   href={item?.path?.replace(
                     `${fields?.data?.rootPath?.siteInfo?.rootPath}/Home`,
@@ -64,7 +64,7 @@ export const Default = ({ fields }: BreadcrumbProps): JSX.Element => {
                 </Link>
               </li>
             );
-          } else return <></>;
+          } else return <div key={index}></div>;
         })}
         <li>
           {

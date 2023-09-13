@@ -64,13 +64,18 @@ export const Default = ({ fields }: HeaderProps): JSX.Element => {
     });
     window.location.href = '/login';
   };
+  const imageURL = String(fields?.Logo?.value?.src)?.replace(
+    'https://sc-jss-playgroundsc.dev.local/',
+    'https://square-termite-set.ngrok-free.app/'
+  );
+  let imageField = { ...fields?.Logo?.value, src: imageURL };
   return (
     <div className="relative font-Poppins">
       <div className="main-nav relative z-10 bg-zinc-50">
         <nav className="container  mx-auto flex justify-between bg-zinc-50 py-5">
           <div className="my-auto w-auto">
             <Link href={'/'}>
-              <Image field={fields.Logo} className="w-full" />
+              <Image field={imageField} className="w-full" />
             </Link>
           </div>
           <ul className="flex flex-row items-center gap-5 font-Poppins text-2xl">
