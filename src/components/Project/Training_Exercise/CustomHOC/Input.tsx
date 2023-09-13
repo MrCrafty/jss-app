@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useRef } from 'react';
 type InputHOCProps = {
   type: string;
   name: string;
@@ -21,6 +21,7 @@ const Input = ({
   className,
   required = true,
 }: InputHOCProps) => {
+  const inputLabel = useRef(null);
   return (
     <div className={'relative flex flex-col' + ' ' + className}>
       <input
@@ -31,10 +32,17 @@ const Input = ({
         min={min}
         max={max}
         className={'peer border border-black p-3 text-3xl'}
+        ref={inputLabel}
       />
       <label
         htmlFor="email"
-        className={`absolute ${
+        onClick={() => {
+          if (inputLabel != null) {
+            //@ts-ignore
+            inputLabel?.current?.focus();
+          }
+        }}
+        className={`absolute cursor-text ${
           value == '' ? 'top-1/2 text-2xl text-gray-500' : 'top-0 text-xl text-gray-700'
         } ${
           required ? "after:text-red-500 after:content-['*']" : ''

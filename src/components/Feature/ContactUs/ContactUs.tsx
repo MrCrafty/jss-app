@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { BiSolidPhone } from 'react-icons/bi';
 import { LuMail } from 'react-icons/lu';
@@ -9,6 +9,7 @@ import Input from 'components/Project/Training_Exercise/CustomHOC/Input';
 import { useRouter } from 'next/router';
 
 export const Default = (): JSX.Element => {
+  const inputLabel = useRef(null);
   const router = useRouter();
   const url = '/api/forms/contactform';
   const formik = useFormik({
@@ -78,10 +79,15 @@ export const Default = (): JSX.Element => {
               className="peer border border-black p-3 text-3xl"
               onChange={formik.handleChange}
               value={formik.values.Message}
+              ref={inputLabel}
             />
             <label
               htmlFor="message"
-              className={`absolute ${
+              onClick={() => {
+                //@ts-ignore
+                inputLabel?.current?.focus();
+              }}
+              className={`absolute cursor-text ${
                 formik.values.Message == ''
                   ? 'top-1/2 text-2xl text-gray-500'
                   : 'top-0 text-xl text-gray-700'
