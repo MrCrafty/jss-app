@@ -38,7 +38,7 @@ export const ProductItem = ({ Title, image, Price, link, ProductId }: Product) =
               />
             </Link>
           </div>
-          <div className="product-price">
+          <div className="product-price text-2xl">
             $<Text field={Price.jsonValue} />
           </div>
         </div>

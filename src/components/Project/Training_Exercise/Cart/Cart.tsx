@@ -6,14 +6,10 @@ interface CartProps {
   params: ComponentParams;
 }
 
-export const Default = (props: CartProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
-
+export const Cart = (props: CartProps): JSX.Element => {
   return (
-    <div className={`component ${props.params.styles}`} id={id ? id : undefined}>
-      <div className="component-content">
-        <p>Cart Component</p>
-      </div>
+    <div className="component-content">
+      <p>Cart Component</p>
     </div>
   );
 };
